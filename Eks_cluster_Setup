@@ -1,0 +1,38 @@
+1.	Create EC2 instance.
+2.	Install Docker, maven, java.
+3.	Clone git hub repo.
+4.	Build java app.
+5.	Create Docker image for the java app using Dockerfile.
+6.	Run the docker container.
+
+# Stage : Run the application
+FROM openjdk:17-alpine
+WORKDIR /app
+COPY target/*.jar ./demo-aws.jar
+EXPOSE 8082
+CMD ["java", "-jar", "demo-aws.jar"]
+
+sudo apt update
+sudo apt install openjdk-17-jdk
+
+FROM openjdk:17-alpine
+•	Base image: Uses a lightweight Linux image with OpenJDK 17 installed.
+•	Why Alpine? It's minimal and small (~100MB or less), which helps reduce image size and speeds up deployment.
+________________________________________
+WORKDIR /app
+•	Sets the working directory inside the container to /app.
+•	Any relative paths used later (like in COPY or CMD) will refer to this directory.
+________________________________________
+COPY target/*.jar ./demo-aws.jar
+•	Copies your built JAR file (from your local machine’s target/ directory) into the container.
+•	Renames it to demo-aws.jar inside the container.
+________________________________________
+EXPOSE 8082
+•	Documents that your app listens on port 8082.
+•	Docker itself doesn't open the port—you still need to do that with docker run -p 8082:8082.
+________________________________________
+CMD ["java", "-jar", "demo-aws.jar"]
+•	Sets the default command to run your Java app when the container starts.
+•	Runs the JAR using java -jar.
+
+
