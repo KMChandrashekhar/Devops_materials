@@ -3,6 +3,27 @@
 #Build an Image from a Dockerfile
 docker build -t <image_name> .
 
+docker build -t your-image-name:tag .
+
+#IMage create, tag  and push process
+
+1.Tag the Image for the Target Repository
+
+docker tag your-image-name:tag your-repo-url/your-image-name:tag
+
+2. Login
+docker login your-repo-url
+
+3. Push
+docker push your-repo-url/your-image-name:tag
+
+4. AWS ECR command
+docker tag your-image-name:tag your-account-id.dkr.ecr.your-region.amazonaws.com/your-repo-name:tag
+
+5. Push
+docker push your-account-id.dkr.ecr.your-region.amazonaws.com/your-repo-name:tag
+
+
 #Build an Image from a Dockerfile without the cache
 docker build -t <image_name> . –no-cache
 
