@@ -1,0 +1,6 @@
+✅ Basic Command to List Remotes
+git remote -v
+
+✅ To Show Detailed Info About a Remote
+git remote show origin
+
