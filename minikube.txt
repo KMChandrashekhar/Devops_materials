@@ -1,0 +1,56 @@
+## Steps to install minikube 
+
+Install Docker - Use Docker desktop
+#create user - sudo usermod -aG docker $USER && newgrp docker
+Install kubectl - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux
+Install minikube - https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download
+start minikube
+Install Helm - https://helm.sh/docs/intro/install/
+
+Add Helm Repo
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+
+kubectl create namespace monitoring
+
+📦 3. Install Prometheus Stack
+
+helm install prometheus prometheus-community/prometheus \
+  --namespace monitoring
+This installs:
+
+Prometheus
+
+Alertmanager
+
+Pushgateway
+
+Node exporters
+
+kubectl get all -n monitoring
+
+
+helm install grafana grafana/grafana --namespace monitoring --set adminPassword='admin'  --set service.type=NodePort
+
+
+Get Access to Grafana & Prometheus this will give  temporary access?
+
+
+kubectl port-forward svc/grafana 3000:80 -n <namespace>
+
+kubectl port-forward svc/prometheus-server 9090:9090 -n <namespace>
+
+kubectl get svc prometheus-server -n monitoring -o yaml > svc.yaml
+
+kubectl apply -f svc.yaml
+
+
+
+helm list --all-namespaces
+helm uninstall prometheus -n monitoring
+
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install prometheus prometheus-community/prometheus
+minikube service prometheus-server
