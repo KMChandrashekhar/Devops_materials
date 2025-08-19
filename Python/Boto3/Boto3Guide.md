@@ -2,7 +2,7 @@
 
 This project uses Boto3, the official AWS SDK for Python, to interact with AWS services.
 
-📦 Prerequisites
+**Prerequisites**
 
 Python 3.7+
 
@@ -14,9 +14,9 @@ pip
 
 **. Clone the Repository**
 
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/kirancgwd/Devops_materials.git
 
-cd your-repo
+cd Devops_materials
 
 **Install Dependencies**
    
@@ -38,13 +38,13 @@ Default region name (e.g., us-east-1)
 
 Output format (e.g., json)
 
-This saves your credentials in:
+**This saves your credentials in:**
 
 ~/.aws/credentials
 
 ~/.aws/config
 
-** Running the Code**
+**Running the Code**
 
 Example command to run a Python script that uses Boto3:
 
