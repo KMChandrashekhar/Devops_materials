@@ -1,7 +1,11 @@
+#Boto3 code for uploading a file to an S3 bucket
+#In my code bucket name is pbx-httpd-logs and file name is httpd.log available in the same directory.
 import boto3
-
 s3 = boto3.client('s3')
-bucket_name = 'my-company-logs'
-file_path = 'logs/app.log'
+bucket_name = 'pbx-httpd-logs'
+file_path = 'httpd.log'
 
-s3.upload_file(file_path, bucket_name, 'app/app.log')
+s3.upload_file(file_path, bucket_name, 'httpd')
+print(f"File {file_path} uploaded to bucket {bucket_name} as 'httpd'")  # Confirmation message
+
+
