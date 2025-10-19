@@ -595,3 +595,5 @@ Destroy complete! Resources: 18 destroyed.
 
 ### **Congratulations, you've reached the end of this lab.**
 
+Terraform IAC
+
